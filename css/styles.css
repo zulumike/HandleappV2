@@ -6,6 +6,9 @@
     --maincolor: rgba(128, 0, 128, 1);
     --barcolor: #ecd9ec;
     --bgcolor: #f8f8f8;
+    --fontsize-std: 32px;
+    --fontsize-small: 16px;
+    --fontfam-std: sans-serif;
 }
 
  /* Global styles
@@ -14,6 +17,8 @@
 body {
     margin: 0px;
     background-color: var(--bgcolor);
+    font-size: var(--fontsize-std);
+    font-family:var(--fontfam-std);
 }
 
 
@@ -59,8 +64,28 @@ body {
     grid-area: shopmenu;
     justify-self: center;
     height: 50px;
-    padding: 10px 10px 10px 10px;
     width: 100%;
+    justify-content: center;
+    align-content: center;
+}
+
+.navbar-shopchoice {
+    height: 35px;
+    width: 100%;
+    background-color: var(--barcolor);
+    color: var(--maincolor);
+    border-radius: 10px;
+    font-family:var(--fontfam-std);
+    font-size: var(--fontsize-small);
+}
+
+.navbar-shopchoice:hover {
+    cursor: pointer;
+}
+
+.navbar-shopchoice option {
+    padding-bottom: 0;
+    font-size: var(--fontsize-std);
 }
 
 .navbar-menu {
@@ -75,17 +100,6 @@ body {
     background-color: var(--barcolor);
 }
 
-.navbar-shopchoice {
-    height: 50px;
-    width: 100%;
-    background-color: var(--barcolor);
-    color: var(--maincolor);
-    border-radius: 10px;
-}
-
-.navbar-shopchoice:hover {
-    cursor: pointer;
-}
 
  /* Main
  -------------------------------------------- */
@@ -112,6 +126,7 @@ body {
 
 .add-groceries label {
     display: inline-block;
+
 }
 
  .main-shoplist {

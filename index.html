@@ -19,9 +19,6 @@
                 <div class="navbar-logo">
                     <object data="img/ZMSoftware.svg" type="image/svg+xml" width="50" height="46"></object>
                 </div>
-                <div class="navbar-menu">
-                    <object data="img/list.svg" type="image/svg+xml" width="50" height="50"></object>
-                </div>
                 <div class="navbar-shopmenu">
                     <form action="shopchoice">
                             <select class="navbar-shopchoice" name="shop" id="shop">
@@ -32,6 +29,9 @@
                             </select>
                     </form>
                 </div>
+                <div class="navbar-menu">
+                    <object data="img/list.svg" type="image/svg+xml" width="50" height="50"></object>
+                </div>
             </nav>
         </div>
     </header>
@@ -40,7 +40,17 @@
             <div class="add-form">
                 <form action="add">
                     <div class="add-groceries">
-                        <label class="grocery-name" for="grocery-name">Vare</label>
+                        <label for="grocery-name">Vare</label>
+                        <label for="group-name">Varegruppe</label>
+                        <br>
+                        <input type="text" class="grocery-name" id="grocery-name">
+                        <select class="group" name="gr-name" id="group-name">
+                            <option value="">Velg butikk</option>
+                            <option value="rema1000">Rema 1000</option>
+                            <option value="bunnpris">Bunnpris</option>
+                            <option value="kiwi">Kiwi</option>
+                        </select>
+                        <!-- <label class="grocery-name" for="grocery-name">Vare</label>
                         <label class="group" for="group">Varegruppe</label><br>
                         <input type="text" id="gr-name" name="gr-name">
                         <input type="text" id="group" name="group" list="grouping">
@@ -51,7 +61,7 @@
                             <option value="Kjøtt">
                             <option value="Hygiene">
                         </datalist>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>
