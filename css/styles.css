@@ -9,7 +9,8 @@
     --fontsize-std: 32px;
     --fontsize-small: 16px;
     --fontfam-std: sans-serif;
-}
+    --maxwidth-std: 600px;
+}   
 
  /* Global styles
  -------------------------------------------- */
@@ -39,7 +40,7 @@ body {
 .navgrid {
     margin: 0px auto;
     display: grid;
-    max-width: 940px;
+    max-width: var(--maxwidth-std);
     grid-template-columns: 2fr 4fr 2fr;
     grid-auto-rows: 50px;
     align-items: center;
@@ -123,7 +124,7 @@ body {
 
 .add-form {
     margin: 5px auto;
-    max-width: 900px;
+    max-width: var(--maxwidth-std);
 }
 
 /* .add-groceries {
@@ -190,9 +191,9 @@ body {
 
  .footer-grid {
     margin: 0px auto;
-    max-width: 940px;
+    max-width: var(--maxwidth-std);
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-columns: 2fr 2fr 2fr;
     grid-auto-rows: 50px;
     align-items: center;
     grid-template-areas: 
