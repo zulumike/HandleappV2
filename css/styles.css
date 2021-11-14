@@ -52,7 +52,8 @@ body {
 
 .navbar-logo {
     grid-area: logo;
-    justify-self: start;
+    justify-self: flex-start;
+    padding: 0px 10px;
     height: 50px;
 }
 
@@ -65,18 +66,21 @@ body {
     justify-self: center;
     height: 50px;
     width: 100%;
-    justify-content: center;
-    align-content: center;
 }
 
 .navbar-shopchoice {
     height: 35px;
     width: 100%;
+    margin: 7.5px auto;
     background-color: var(--barcolor);
     color: var(--maincolor);
     border-radius: 10px;
     font-family:var(--fontfam-std);
     font-size: var(--fontsize-small);
+}
+
+.navbar-shopchoice:focus {
+    outline: none;
 }
 
 .navbar-shopchoice:hover {
@@ -109,8 +113,10 @@ body {
  }
 
 .add-container {
-    position: fixed;
-    top: 50px;
+    /* position: fixed;
+    top: 50px; */
+    display: flex;
+    margin-top: 50px;
     width: 100%;
     background-color: var(--bgcolor);
 }
@@ -120,17 +126,28 @@ body {
     max-width: 900px;
 }
 
-.add-groceries {
+/* .add-groceries {
     margin: 0px auto;
-}
+} */
 
 .add-groceries label {
     display: inline-block;
 
 }
 
+.add-button {
+    background-color: var(--maincolor);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Shoplist
+---------------------------*/
+
+
  .main-shoplist {
-    margin-top: 100px;
+    /* margin-top: 100px; */
     margin-bottom: 50px;
     width: 100%;
  }
@@ -175,11 +192,11 @@ body {
     margin: 0px auto;
     max-width: 940px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr 2fr;
     grid-auto-rows: 50px;
     align-items: center;
     grid-template-areas: 
-        "left   right"
+        "left   middle  right"
     ;
     background-color: var(--barcolor);
     border-radius: 10px;
@@ -190,6 +207,29 @@ body {
     grid-area: left;
     justify-self: start;
  }
+
+ .footer-middle {
+    grid-area: middle;
+    width: 100%;
+    height: 100%;
+ }
+
+ .totop-button {
+    display: none;
+    width: 100%;
+    height: 40px;
+    padding: 0;
+    margin: 5px auto;
+    background-color: var(--maincolor);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: var(--fontsize-std);
+}
+
+.totop-button:active {
+    background-color: var(--barcolor);
+}
 
  .footer-right {
     grid-area: right;
