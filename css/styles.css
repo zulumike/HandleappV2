@@ -143,6 +143,10 @@ body {
     color: var(--maincolor);
 }
 
+.check-icon object {
+    vertical-align: -10%;
+}
+
 .shoplist-table object {
     padding: 5px;
     border-radius: 10px;
