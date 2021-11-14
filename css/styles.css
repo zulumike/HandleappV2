@@ -143,6 +143,15 @@ body {
     color: var(--maincolor);
 }
 
+.shoplist-table object {
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.shoplist-table object:hover {
+    background-color: var(--barcolor);
+}
+
  /* Footer
  -------------------------------------------- */
 
