@@ -14,5 +14,4 @@ jobs:
         server: ftp.domeneshop.no
         server-dir: www/chart/
         username: dingseboms
-        password: oleZM1803
-        # password: ${{ secrets.ftp_password }}
+        password: ${{ secrets.ftp_password }}
