@@ -19,4 +19,6 @@ function topFunction() {
     left: 0, 
     behavior: 'smooth'
   });
+
+  document.getElementById('grocery-name').focus();
 }
