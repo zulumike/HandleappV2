@@ -114,8 +114,6 @@ body {
  }
 
 .add-container {
-    /* position: fixed;
-    top: 50px; */
     display: flex;
     margin-top: 50px;
     width: 100%;
@@ -127,12 +125,29 @@ body {
     max-width: var(--maxwidth-std);
 }
 
-/* .add-groceries {
-    margin: 0px auto;
-} */
+.groceryinput-div {
+    height: 30px;
+    margin-bottom: 5px;
+    align-content: stretch;
+}
 
-.add-groceries label {
-    display: inline-block;
+.grocery-name {
+    height: 100%;
+    width: 40%;
+    padding: 0;
+    border-width: 0.5px;
+}
+
+.grocery-amount {
+    height: 100%;
+    width: 10%;
+    padding: 0;
+    border-width: 0.5px;
+    text-align: center;
+}
+
+.groceryinput-div select {
+    height: 100%;
 
 }
 
@@ -141,6 +156,8 @@ body {
     color: white;
     border: none;
     border-radius: 10px;
+    height: 100%;
+    width: 100px;
 }
 
 /* Shoplist
