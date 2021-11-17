@@ -9,7 +9,7 @@
     --fontsize-std: 32px;
     --fontsize-small: 16px;
     --fontfam-std: sans-serif;
-    --maxwidth-std: 940px;
+    --maxwidth-std: 640px;
 }   
 
  /* Global styles
@@ -133,6 +133,7 @@ body {
 
 .grocery-name {
     height: 100%;
+    margin-left: 2%;
     width: 30%;
     padding: 0;
     border-width: 0.5px;
@@ -158,6 +159,7 @@ body {
     border: none;
     border-radius: 10px;
     height: 100%;
+    margin-right: 2%;
     width: 20%;
 }
 
@@ -166,7 +168,6 @@ body {
 
 
  .main-shoplist {
-    /* margin-top: 100px; */
     width: 100%;
  }
 
