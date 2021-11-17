@@ -12,6 +12,6 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
       with:
         server: ftp.domeneshop.no
-        server-dir: www/chartstage/
+        server-dir: www/chart/
         username: dingseboms
         password: ${{ secrets.ftp_password }}
