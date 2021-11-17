@@ -1,3 +1,13 @@
+// *************
+//  VARIABLER
+// *************
+
+// **********************
+// TIL TOPPEN FUNKSJON
+// Når det scrolles nedover dukker det opp en til toppen knapp som scroller til toppen og setter
+// input felt aktivt
+// ***********************
+
 //Get the button
 let toTopButton = document.getElementById("toTopButton");
 
@@ -21,4 +31,30 @@ function topFunction() {
   });
 
   document.getElementById('grocery-name').focus();
+}
+
+// ************************
+// LEGG TIL VARE FUNKSJON
+// Når pluss-knapp trykkes startes denne funksjonen (trigget via html onclick).
+// Funksjonen legger til vare som objekt vha funksjonen shopitem
+// !! Funksjone må også sørge for oppdatering av database/localstorage.
+// ************************
+
+function addToList() {
+  console.log("test");
+}
+
+// ************************
+// HANDLELISTE KONSTRUKTØR
+// For å opprette objekt av hvert item som legges til i listen, samt vise dette i listen
+// ************************
+
+// Objekt konstruktør for handlelisten. Lager et objekt pr vare som legges inn.
+function shopitem(name, amount, group) {
+  this.name = name; //Data skal komme fra html skjema
+  this.amount = amount;
+  this.group = group;
+  this.display = function() {
+    //Funksjon for å legge varene i listen på skjerm.
+  }
 }

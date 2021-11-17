@@ -109,7 +109,70 @@ body {
  /* Main
  -------------------------------------------- */
 
- main {
+.main-container {
+    width: 100%;
+    margin-top: 55px;
+}
+
+.main-top {
+    width: 100%;
+}
+
+.main-topgrid {
+    display: grid;
+    margin: 0px auto;
+    max-width: var(--maxwidth-std);
+    grid-template-columns: 40% 10% 40% 7%;
+    grid-auto-rows: 25px;
+    gap: 1%;
+}
+
+.shopitem-name {
+    border: none;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+.shopitem-amount {
+    border: none;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+.shopitem-group {
+    border: none;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+.shopitem-addbtn {
+    justify-self: center;
+    align-self: center;
+    padding: 5px;
+    background: url(/img/plus-circle-fill.svg) no-repeat top left;
+    background-size: contain;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border: none;
+}
+
+.main-shoplist {
+    width: 100%;
+}
+
+.main-shoplisttable {
+    margin: 0px auto;
+    margin-bottom: 50px;
+    max-width: var(--maxwidth-std);
+}
+
+.main-shoplisttable td {
+    padding: 2px 5px;
+}
+
+ /* main {
      margin-top: 50;
  }
 
@@ -161,7 +224,7 @@ body {
     height: 100%;
     margin-right: 2%;
     width: 20%;
-}
+} */
 
 /* Shoplist
 ---------------------------*/
