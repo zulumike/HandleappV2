@@ -5,7 +5,7 @@ let toTopButton = document.getElementById("toTopButton");
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
     toTopButton.style.display = "block";
   } else {
     toTopButton.style.display = "none";
@@ -19,4 +19,6 @@ function topFunction() {
     left: 0, 
     behavior: 'smooth'
   });
+
+  document.getElementById('grocery-name').focus();
 }
