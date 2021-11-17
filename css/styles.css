@@ -166,7 +166,6 @@ body {
 
  .main-shoplist {
     /* margin-top: 100px; */
-    margin-bottom: 50px;
     width: 100%;
  }
 
@@ -190,6 +189,25 @@ body {
 .shoplist-table object:hover {
     background-color: var(--barcolor);
 }
+
+.main-shoppedlist {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.main-shoppedlist h6 {
+    margin: 5px auto;
+    text-align: center;
+}
+
+.shoppedlist-table {
+    margin: 0px auto;
+}
+.shoppedlist-table object {
+    padding: 5px;
+    border-radius: 10px;
+}
+
 
  /* Footer
  -------------------------------------------- */
