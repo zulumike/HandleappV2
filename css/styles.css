@@ -7,6 +7,7 @@
     --barcolor: #ecd9ec;
     --bgcolor: #f8f8f8;
     --fontsize-std: 32px;
+    --fontsize-mdm: 24px;
     --fontsize-small: 16px;
     --fontfam-std: sans-serif;
     --maxwidth-std: 640px;
@@ -148,14 +149,15 @@ body {
 .shopitem-addbtn {
     justify-self: center;
     align-self: center;
-    padding: 5px;
-    background: url(/img/plus-circle-fill.svg) no-repeat top left;
-    background-size: contain;
-    cursor: pointer;
-    display: inline-block;
     height: 25px;
     width: 25px;
+    padding: 0px;
+    background-color: var(--maincolor);
+    color: var(--bgcolor);
     border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: var(--fontsize-mdm);
 }
 
 .main-shoplist {
