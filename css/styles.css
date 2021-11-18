@@ -158,6 +158,8 @@ body {
     border-radius: 50%;
     cursor: pointer;
     font-size: var(--fontsize-mdm);
+    text-align: center;
+    vertical-align: middle;
 }
 
 .main-shoplist {
