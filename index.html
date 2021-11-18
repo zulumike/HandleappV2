@@ -11,7 +11,7 @@
     <link rel="manifest" href="ico/site.webmanifest">
     <link rel="stylesheet" href="css/styles.css">
     <title>Handleliste</title>
-    <script src="js/functions.js"></script>
+    <script src="js/totop.js"></script>
 </head>
 <body>
     <header>
@@ -24,9 +24,9 @@
                     <form action="shopchoice">
                             <select class="navbar-shopchoice" name="shop" id="shop">
                                 <option value="">Velg butikk</option>
-                                <option value="rema1000">Rema 1000</option>
-                                <option value="bunnpris">Bunnpris</option>
-                                <option value="kiwi">Kiwi</option>
+                                <option value="Rema1000">Rema 1000</option>
+                                <option value="Bunnpris">Bunnpris</option>
+                                <option value="Kiwi">Kiwi</option>
                             </select>
                     </form>
                 </div>
@@ -44,18 +44,18 @@
                 <input class="shopitem-name" type="number" name="shopitem-amount" id="shopitem-amount" value="1" step="0.5">
                 <select class="shopitem-group" name="shopitem-group" id="shopitem-group">
                     <option value="">Velg gruppe</option>
-                    <option value="meieriprodukt">Meieriprodukt</option>
-                    <option value="paalegg">Pålegg</option>
-                    <option value="godteri">Godteri</option>
-                    <option value="ny">Legg til gruppe</option>
+                    <option value="Meieriprodukt">Meieriprodukt</option>
+                    <option value="Pålegg">Pålegg</option>
+                    <option value="Godteri">Godteri</option>
+                    <option value="Legg til gruppe">Legg til gruppe</option>
                 </select>
                 <button class="shopitem-addbtn" onclick="addToList()">+</button>
             </div>
         </div>
 
         <div class="main-shoplist">
-            <table class="main-shoplisttable">
-                <tr>
+            <table class="main-shoplisttable" id="main-shoplisttable">
+                <!-- <tr>
                     <td>
                         <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
                     </td>
@@ -72,166 +72,10 @@
                     <td>
                         <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
                     </td>
-                </tr>
+                </tr> -->
             </table>
         </div>
-
     </div>
-
-
-
-
-    <!-- <div class="add-container">
-        <div class="add-form">
-            <form action="add">  
-                <div class="groceryinput-div">
-                    <input type="text" class="grocery-name" id="grocery-name" autofocus="true" maxlength="20" placeholder="Navn">
-                    <input class="grocery-amount" type="number" value="1" step="0.5">
-                    <select class="group" name="gr-name" id="group-name">
-                        <option value="">Velg gruppe</option>
-                        <option value="meieriprodukt">Meieriprodukt</option>
-                        <option value="paalegg">Pålegg</option>
-                        <option value="godteri">Godteri</option>
-                        <option value="ny">Legg til gruppe</option>
-                    </select>
-                    <button class="add-button">Legg til</button>
-                </div>  
-            </form>
-        </div>
-    </div>
-    <div class="main-shoplist">
-        <table class="shoplist-table">
-            <tbody>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Melk</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Brød</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Smør</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Egg</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Skinkeost</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Salami</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Nugatti</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Øl</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Coca Cola</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Smågodt</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Paprika</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-check.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Agurk</td>
-                    <td>
-                        <object data="img/trash.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="main-shoppedlist">
-        <h6>----------I handlekurven---------</h6>
-        <table class="shoppedlist-table">
-            <tbody>
-                <tr class="shoppedlist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-x.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Kjøttdeig</td>
-                </tr>
-                <tr class="shoplist-row">
-                    <td class="check-icon">
-                        <object data="img/cart-x.svg" type="image/svg+xml" width="20px" height="20px"></object>
-                    </td>
-                    <td>Spaghetti</td>
-                </tr>
-            </tbody>
-        </table>
-    </div> -->
 
 </main>
 <footer>
@@ -249,6 +93,6 @@
         </div>
     </div>
 </footer>
-
+<script src="js/functions.js"></script>
 </body>
 </html>

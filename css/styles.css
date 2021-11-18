@@ -129,6 +129,7 @@ body {
 }
 
 .shopitem-name {
+    margin-left: 5px;
     border: none;
     border: solid 1px;
     border-radius: 10px;
@@ -147,6 +148,7 @@ body {
 }
 
 .shopitem-addbtn {
+    margin-right: 5px;
     justify-self: center;
     align-self: center;
     height: 35px;
