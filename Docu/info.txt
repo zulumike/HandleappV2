@@ -16,3 +16,24 @@
     Bruke point read istedenfor query.
 
     Eller kanskje en funksjon som kan sende signal til andre brukere av samme konto om å oppdatere?
+
+
+- Oprettet mysql database lokalt på pc, samt kjørt npm install mysql
+    Nå gjenstår å lage en connection og finne ut hvordan opprette tabeller og legge til data.
+    
+- Istedenfor å bruke database lokalt, prøver jeg rett på mysql på domeneshop.
+
+- Må bruke node.js for å koble til database. Dette er et javascript-tillegg for å kjøre js som server
+    NB: Domeneshop takler ikke node.js, så foreløpig kjøres dette lokalt. Mener det skal gå an å kjøre i azure.
+    Da kanskje med domeneshop sin mysql for å spare kronasjer....
+    - Installert node.js på pc. må initiere js fila som skal kjøre server. usikker om dette bare er en enkelt fil
+     og børe være en spesiell for bare det som trengs eller hvordan dette funker....
+    Installert express via npm
+    installert api-mount for å kunne kommunisere server client
+
+    ! Funka dårlig, så avinstallerte api-mount og express
+
+- Mysql database hos domeneshop:
+    Adresse: dingseboms2.mysql.domeneshop.no
+    Brukernavn: dingseboms2
+    passord: Perkele1803!

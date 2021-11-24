@@ -5,7 +5,8 @@
 // ***********************
 
 //Get the button
-let toTopButton = document.getElementById("toTopButton");
+const toTopButton = document.querySelector('#totopbutton');
+const inputName = document.querySelector('#shopitem-name');
 
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
@@ -26,5 +27,5 @@ function topFunction() {
     behavior: 'smooth'
   });
 
-  document.getElementById('grocery-name').focus();
+  inputName.focus();
 }

@@ -7,7 +7,12 @@ const shopItemName = document.querySelector("#shopitem-name");
 const shopItemAmount = document.querySelector("#shopitem-amount");
 const shopItemGroup = document.querySelector('#shopitem-group');
 const shopListTable = document.querySelector('#main-shoplisttable');
+let shopItemArr = [];
 
+// Test av database connection
+// ********************
+
+// api.dbconnect();
 
 
 // ************************
@@ -16,6 +21,22 @@ const shopListTable = document.querySelector('#main-shoplisttable');
 // Funksjonen legger til vare som objekt vha funksjonen shopitem
 // !! Funksjone må også sørge for oppdatering av database/localstorage.
 // ************************
+
+// Eventhandler som trigger på enter i input-feltene
+
+shopItemName.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    addToList();
+  }
+})
+
+shopItemAmount.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    addToList();
+  }
+})
 
 
 // Objekt konstruktør som oppretter et objekt av varenavn, antall og gruppe
@@ -30,6 +51,8 @@ function ShopItem(grName, grAmount, grGroup) {
     tdAddBtn.setAttribute("type", "image/svg+xml");
     tdAddBtn.setAttribute("width", "20px");
     tdAddBtn.setAttribute("height", "20px");
+    const tdAmount = document.createElement("td");
+    tdAmount.innerHTML = this.amount;
     const tdName = document.createElement("td");
     tdName.innerHTML = this.name;
     const tdDelBtn = document.createElement("object");
@@ -39,34 +62,22 @@ function ShopItem(grName, grAmount, grGroup) {
     tdDelBtn.setAttribute("height", "20px");
     shopListTable.appendChild(tr);
     tr.appendChild(tdAddBtn);
+    tr.appendChild(tdAmount);
     tr.appendChild(tdName);
     tr.appendChild(tdDelBtn);
   }
 } 
 
+
 // Funksjon som oppretter objekt
 function addToList() {
-  let newItem = new ShopItem(shopItemName.value, shopItemAmount.value, shopItemGroup.value);
-  newItem.updateShopList();
+  let shopItem = new ShopItem(shopItemName.value, shopItemAmount.value, shopItemGroup.value);
+  shopItem.updateShopList();
+  shopItemName.value = ""
+  shopItemAmount.value = 1;
 }
-
 
 // ************************
 // FLYTT VARER TIL HANDLEKURV
 // Når handlekurv knapp trykkes skal den aktuelle varen flyttes til handlekurven
 // 
-
-// ************************
-// HANDLELISTE KONSTRUKTØR
-// For å opprette objekt av hvert item som legges til i listen, samt vise dette i listen
-// ************************
-
-// Objekt konstruktør for handlelisten. Lager et objekt pr vare som legges inn.
-function shopitem(name, amount, group) {
-  this.name = name; //Data skal komme fra html skjema
-  this.amount = amount;
-  this.group = group;
-  this.display = function() {
-    //Funksjon for å legge varene i listen på skjerm.
-  }
-}
