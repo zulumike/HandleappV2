@@ -37,3 +37,14 @@
     Adresse: dingseboms2.mysql.domeneshop.no
     Brukernavn: dingseboms2
     passord: Perkele1803!
+
+05.12.2021: 
+    Fjernet rester etter node.js pakkene
+    Alle objekter (varer) legges nå til som objekt i et array
+    La til ny egenskap på objektet (shopped), som sier om varen skal ligge i handleliste eller handlekurv
+    Laget funksjon for å slette varer
+    Laget funksjon for å flytte varer mellom handleliste og handlekurv
+
+    Nå gjenstår å finne en måte å lagre dette 
+    - i database
+    - lokalt
