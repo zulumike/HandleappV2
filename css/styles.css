@@ -164,10 +164,6 @@ body {
     vertical-align: middle;
 }
 
-.main-shoplist {
-    width: 100%;
-}
-
 .main-shoplisttable {
     margin: 0px auto;
     margin-bottom: 50px;
@@ -178,60 +174,6 @@ body {
     padding: 2px 5px;
 }
 
- /* main {
-     margin-top: 50;
- }
-
-.add-container {
-    display: flex;
-    margin-top: 50px;
-    width: 100%;
-    background-color: var(--bgcolor);
-}
-
-.add-form {
-    margin: 5px auto;
-    max-width: var(--maxwidth-std);
-}
-
-.groceryinput-div {
-    height: 30px;
-    margin-bottom: 5px;
-    align-content: stretch;
-}
-
-.grocery-name {
-    height: 100%;
-    margin-left: 2%;
-    width: 30%;
-    padding: 0;
-    border-width: 0.5px;
-}
-
-.grocery-amount {
-    height: 100%;
-    width: 10%;
-    padding: 0;
-    border-width: 0.5px;
-    text-align: center;
-}
-
-.groceryinput-div select {
-    height: 100%;
-    width: 30%;
-
-}
-
-.add-button {
-    background-color: var(--maincolor);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    height: 100%;
-    margin-right: 2%;
-    width: 20%;
-} */
-
 /* Shoplist
 ---------------------------*/
 
@@ -240,8 +182,26 @@ body {
     width: 100%;
  }
 
+ .main-shoplisttable {
+    margin: 0px auto;
+    margin-bottom: 50px;
+    max-width: var(--maxwidth-std);
+}
+
+.main-shoplisttable td {
+    padding: 2px 5px;
+}
+
 .shoplist-table {
     margin: 0px auto;
+}
+
+.cartbtn:hover {
+    cursor: pointer;
+}
+
+.delbtn:hover {
+    cursor: pointer;
 }
 
 .check-icon {

@@ -47,16 +47,50 @@ shopItemAmount.addEventListener("keyup", function(event) {
 function deleteItem(id) {
   shopItemArr.splice(id, 1);
   showShopItems();
+  saveToLocal();
 }
+
+// ***********************
+// LEGGER VARE FRA HANDLELISTE TIL HANDLEKURV
+// Når handlekurv knapp trykkes flyttes aktuell vare til handlekurv
 
 function addToCart(id) {
   shopItemArr[id].shopped = true;
   showShopItems();
+  saveToLocal();
 }
+
+
+// ***********************
+// LEGGER VARE FRA HANDLEKURV TILBAKE TIL HANDLELISTE
+// Når handlekurv knapp trykkes flyttes aktuell vare tilbake til handleliste
 
 function removeFromCart(id) {
   shopItemArr[id].shopped = false;
   showShopItems();
+  saveToLocal();
+}
+
+
+// ***********************
+// HENTER VARENE FRA LOCALSTORAGE
+// Henter varer fra localstorage og inn i array
+
+function restoreFromLocal() {
+  var localStorageArr = JSON.parse(localStorage.getItem("shoplist"));
+  console.log(localStorageArr);
+  shopItemArr = localStorageArr;
+  showShopItems();
+}
+
+
+// ***********************
+// LAGRER VARENE I LOCALSTORAGE
+// Henter varer fra array og inn i localstorage
+
+function saveToLocal() {
+  // localStorage.removeItem("shoplist");
+  localStorage.setItem("shoplist", JSON.stringify(shopItemArr));
 }
 
 // Funksjon som skriver shopItemArr ut på nettleseren
@@ -82,6 +116,7 @@ function showShopItems() {
     if (shopItemArr[i].shopped == false) {                      // Hvis vare ikke er lagt i handlekurv
       const tr = document.createElement("tr");                  // Ny rad i tabellen
       const tdAddBtn = document.createElement("img");           // Knapp for å legge vare i handlekurven
+      tdAddBtn.classList.add("cartbtn");
       tdAddBtn.setAttribute("src", "img/cart-check.svg")
       tdAddBtn.setAttribute("type", "image/svg+xml");
       tdAddBtn.setAttribute("width", "20px");
@@ -94,6 +129,7 @@ function showShopItems() {
       const tdName = document.createElement("td");              // Legger til varenavn
       tdName.innerHTML = shopItemArr[i].name;
       const tdDelBtn = document.createElement("img");           // Legger til Sletteknapp
+      tdDelBtn.classList.add("delbtn");
       tdDelBtn.setAttribute("src", "img/trash.svg")
       tdDelBtn.setAttribute("type", "image/svg+xml");
       tdDelBtn.setAttribute("width", "20px");
@@ -117,6 +153,7 @@ function showShopItems() {
       }
       const trCart = document.createElement("tr");              // Ny rad i tabellen                                              // Hvis vare er lagt i handlekurv
       const tdRemBtn = document.createElement("img");            // Knapp for å flytte vare tilbake til handlelisten
+      tdRemBtn.classList.add("cartbtn");
       tdRemBtn.setAttribute("src", "img/cart-x.svg");
       tdRemBtn.setAttribute("type", "image/svg+xml");
       tdRemBtn.setAttribute("width", "20px");
@@ -129,6 +166,7 @@ function showShopItems() {
       const tdNameInCart = document.createElement("td");        // Legger til varenavn
       tdNameInCart.innerHTML = shopItemArr[i].name;
       const tdDelCartBtn = document.createElement("img");       //Legger til sletteknapp
+      tdDelCartBtn.classList.add("delbtn");
       tdDelCartBtn.setAttribute("src", "img/trash.svg")
       tdDelCartBtn.setAttribute("type", "image/svg+xml");
       tdDelCartBtn.setAttribute("width", "20px");
@@ -143,6 +181,7 @@ function showShopItems() {
       trCart.appendChild(tdDelCartBtn);
   }
   }
+  topFunction();
 }
 
 // Objekt konstruktør som oppretter et objekt av varenavn, antall og gruppe
@@ -158,11 +197,15 @@ function addToList() {
   let shopItem = new ShopItem(shopItemName.value, shopItemAmount.value, shopItemGroup.value);
   shopItemArr.push(shopItem);
   showShopItems();
+  saveToLocal();
   shopItemName.value = ""
   shopItemAmount.value = 1;
 }
 
+
 // ************************
-// FLYTT VARER TIL HANDLEKURV
-// Når handlekurv knapp trykkes skal den aktuelle varen flyttes til handlekurven
-// 
+// SJEKKER OM LOCALSTORAGE EKSISTERER OG KJØRER FUNKSJON FOR Å HENTE VARER
+
+if (localStorage.shoplist) {
+  restoreFromLocal();
+}

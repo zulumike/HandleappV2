@@ -46,5 +46,16 @@
     Laget funksjon for å flytte varer mellom handleliste og handlekurv
 
     Nå gjenstår å finne en måte å lagre dette 
-    - i database
-    - lokalt
+    [ ] i database
+    [V] lokalt
+
+    [V] Må legge til css for å endre muspeker på knapper for sletting og flytting
+    
+
+06.12.2021:
+    Lagt til lagring til localstorage
+    Ordnet css for muspeker over sletteknapp og flytteknapp
+
+    [] Må legge til krav til innhold i navn-feltet
+    [] Knapp med dertil funksjon for å fjerne hele listen,
+        Ligge i menyen oppe til høyre, men poppe opp som alternativ når alle varer er "plukket".
