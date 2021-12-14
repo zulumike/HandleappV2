@@ -30,7 +30,11 @@
                     </form>
                 </div>
                 <div class="navbar-menu">
-                    <img src="img/list.svg" type="image/svg+xml" width="50" height="50"></img>
+                    <img src="img/list.svg" class="navbar-menu-btn" onclick="showMenu()" type="image/svg+xml" width="50" height="50"></img>
+                    <div id="dropDownMenu" class="dropdown-menu">
+                        <span onclick="emptyShopItemArr();return false;">Reset</span>
+                        <span onclick="showCategories();return false;">Kategorier</span>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -39,7 +43,7 @@
     <div class="main-container">
         <div class="main-top">
             <div class="main-topgrid">
-                <input class="shopitem-name" type="text" name="shopitem-name" id="shopitem-name" autofocus="true" maxlength="20" placeholder="Navn">
+                <input class="shopitem-name" type="text" name="shopitem-name" id="shopitem-name" autofocus="true" maxlength="50" placeholder="Navn" required>
                 <input class="shopitem-name" type="number" name="shopitem-amount" id="shopitem-amount" value="1" step="0.5">
                 <select class="shopitem-group" name="shopitem-group" id="shopitem-group">
                     <option value="">Velg gruppe</option>
@@ -48,7 +52,7 @@
                     <option value="Godteri">Godteri</option>
                     <option value="Legg til gruppe">Legg til gruppe</option>
                 </select>
-                <button class="shopitem-addbtn" onclick="addToList()">+</button>
+                <button class="addbtn" onclick="addToList()">+</button>
             </div>
         </div>
 
@@ -67,7 +71,7 @@
     <div class="footer-container">
         <div class="footer-grid">
             <div class="footer-left">
-                <h4>STAGING</h4>
+                <h6>STAGING</h6>
             </div>
             <div class="footer-middle">
                 <button onclick="topFunction()" title="Gå til toppen" id="totopbutton" class="totop-button">Til toppen</button>
@@ -79,6 +83,5 @@
     </div>
 </footer>
 <script src="js/functions.js"></script>
-<script src="js/totop.js"></script>
 </body>
 </html>

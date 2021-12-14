@@ -6,8 +6,8 @@
     --maincolor: rgba(128, 0, 128, 1);
     --barcolor: #ecd9ec;
     --bgcolor: #f8f8f8;
-    --fontsize-std: 32px;
-    --fontsize-mdm: 24px;
+    --fontsize-std: 24px;
+    --fontsize-mdm: 18px;
     --fontsize-small: 16px;
     --fontfam-std: sans-serif;
     --maxwidth-std: 640px;
@@ -21,6 +21,21 @@ body {
     background-color: var(--bgcolor);
     font-size: var(--fontsize-std);
     font-family:var(--fontfam-std);
+}
+
+.addbtn {
+    margin-right: 0px;
+    height: 35px;
+    width: 35px;
+    padding: 0px;
+    background-color: var(--maincolor);
+    color: var(--bgcolor);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: var(--fontsize-mdm);
+    text-align: center;
+    vertical-align: middle;
 }
 
 
@@ -97,13 +112,34 @@ body {
 .navbar-menu {
     grid-area: hamburger;
     height: 50px;
-    justify-self: flex-end;
+    /* justify-self: flex-end; */
     border-radius: 10px;
     padding: 0px 10px;
+    cursor: pointer;
+    text-align: end;
 }
 
 .navbar-menu:active {
     background-color: var(--barcolor);
+}
+
+.dropdown-menu {
+    display: none;
+    margin-top: -5px;
+    margin-right: -10px;
+    background-color: var(--barcolor);
+    border-radius: 10px;
+    text-align: end;
+}
+
+.dropdown-menu span {
+    font-size: var(--fontsize-mdm);
+    text-align: end;
+    padding: 5px;
+}
+
+.show-menu {
+    display: block;
 }
 
 
@@ -123,13 +159,13 @@ body {
     display: grid;
     margin: 0px auto;
     max-width: var(--maxwidth-std);
-    grid-template-columns: 40% 10% 40% 7%;
+    grid-template-columns: 40% 10% 37% 10%;
     grid-auto-rows: 35px;
     gap: 1%;
 }
 
 .shopitem-name {
-    margin-left: 5px;
+    margin-left: 0px;
     border: none;
     border: solid 1px;
     border-radius: 10px;
@@ -147,23 +183,6 @@ body {
     border-radius: 10px;
 }
 
-.shopitem-addbtn {
-    margin-right: 5px;
-    justify-self: center;
-    align-self: center;
-    height: 35px;
-    width: 35px;
-    padding: 0px;
-    background-color: var(--maincolor);
-    color: var(--bgcolor);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: var(--fontsize-mdm);
-    text-align: center;
-    vertical-align: middle;
-}
-
 .main-shoplisttable {
     margin: 0px auto;
     margin-bottom: 50px;
@@ -173,6 +192,7 @@ body {
 .main-shoplisttable td {
     padding: 2px 5px;
 }
+
 
 /* Shoplist
 ---------------------------*/
@@ -200,6 +220,10 @@ body {
     cursor: pointer;
 }
 
+.amountcol {
+    text-align: end;
+}
+
 .delbtn:hover {
     cursor: pointer;
 }
@@ -219,6 +243,10 @@ body {
 
 .shoplist-table object:hover {
     background-color: var(--barcolor);
+}
+
+.shop-item-name {
+    text-align: center;
 }
 
 .main-shoppedlist {
@@ -277,6 +305,7 @@ body {
  .footer-left {
     grid-area: left;
     justify-self: start;
+    margin-left: 10px;
  }
 
  .footer-middle {
@@ -306,3 +335,40 @@ body {
     grid-area: right;
     justify-self: end;
  }
+
+
+ /* categories
+---------------------------*/
+
+.categories-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.categories-list-div {
+    display: flex;
+    margin: auto;
+    margin-top: 53px;
+    max-width: var(--maxwidth-std);
+    min-height: 300px;
+    border-radius: 10px;
+    background-color:var(--barcolor);
+    justify-content: center;
+    align-items: start;
+}
+
+.categories-list-div button {
+    margin: 5px;
+}
+
+.category-input {
+    margin: 5px;
+    height: 31px;
+    border: none;
+    border: solid 1px;
+    border-radius: 10px;
+}

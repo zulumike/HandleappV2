@@ -1,3 +1,5 @@
+
+
 // *************
 //  VARIABLER
 // *************
@@ -8,20 +10,66 @@ const shopItemAmount = document.querySelector("#shopitem-amount");
 const shopItemGroup = document.querySelector('#shopitem-group');
 const shopListTable = document.querySelector('#main-shoplisttable');
 const shoppedListTable = document.querySelector('#main-shoppedlisttable');
+const toTopButton = document.querySelector('#totopbutton');
+const dropDownMenu = document.querySelector('#dropDownMenu');
+
 let shopItemArr = [];
-
-// Test av database connection
-// ********************
-
-// api.dbconnect();
+let categoriesArr = [];
 
 
-// ************************
-// LEGG TIL VARE FUNKSJONER
-// Når pluss-knapp trykkes startes denne funksjonen (trigget via html onclick).
-// Funksjonen legger til vare som objekt vha funksjonen shopitem
-// !! Funksjone må også sørge for oppdatering av database/localstorage.
-// ************************
+// ***********************
+// FUNKSJON FOR Å LUKKE MENY HVIS DET TRYKKES ET STED I NETTLESER
+//
+window.onclick = function(event) {
+  if (!event.target.matches('.navbar-menu-btn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-menu");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show-menu')) {
+        openDropdown.classList.remove('show-menu');
+      }
+    }
+  }
+}
+
+// **********************
+// TIL TOPPEN FUNKSJON
+// Når det scrolles nedover dukker det opp en til toppen knapp som scroller til toppen og setter
+// input felt aktivt
+// ***********************
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+    toTopButton.style.display = "block";
+  } else {
+    toTopButton.style.display = "none";
+  }
+}
+
+// FUNKSJON FOR Å SCROLLE TIL TOPPEN OG SETTE INPUTFELT I FOKUS
+// 
+function topFunction() {
+  const inputName = document.querySelector('#shopitem-name');
+  window.scroll({
+    top: 0, 
+    left: 0, 
+    behavior: 'smooth'
+  });
+
+  inputName.focus();
+}
+
+// *****************
+// FUNKSJON FOR Å VISE MENY
+//
+function showMenu() {
+  dropDownMenu.classList.toggle("show-menu");
+}
+
 
 // Eventhandler som trigger på enter i input-feltene
 
@@ -78,7 +126,6 @@ function removeFromCart(id) {
 
 function restoreFromLocal() {
   var localStorageArr = JSON.parse(localStorage.getItem("shoplist"));
-  console.log(localStorageArr);
   shopItemArr = localStorageArr;
   showShopItems();
 }
@@ -91,6 +138,12 @@ function restoreFromLocal() {
 function saveToLocal() {
   // localStorage.removeItem("shoplist");
   localStorage.setItem("shoplist", JSON.stringify(shopItemArr));
+}
+
+function emptyShopItemArr() {
+  shopItemArr = [];
+  showShopItems();
+  saveToLocal();
 }
 
 // Funksjon som skriver shopItemArr ut på nettleseren
@@ -111,6 +164,7 @@ function showShopItems() {
   shopListTable.appendChild(shoppedListDiv);
 
   let cartHeaderExist = false;
+
   // loop som går gjennom alle items i array og presenterer dem på skjerm
   for (let i = 0; i < shopItemArr.length; i++) {
     if (shopItemArr[i].shopped == false) {                      // Hvis vare ikke er lagt i handlekurv
@@ -126,7 +180,9 @@ function showShopItems() {
       })
       const tdAmount = document.createElement("td");            // Legger til mengde
       tdAmount.innerHTML = shopItemArr[i].amount;
+      tdAmount.classList.add("amountcol");
       const tdName = document.createElement("td");              // Legger til varenavn
+      tdName.classList.add("shop-item-name");
       tdName.innerHTML = shopItemArr[i].name;
       const tdDelBtn = document.createElement("img");           // Legger til Sletteknapp
       tdDelBtn.classList.add("delbtn");
@@ -142,43 +198,43 @@ function showShopItems() {
       tr.appendChild(tdAmount);
       tr.appendChild(tdName);
       tr.appendChild(tdDelBtn);
-  } else {        
-      if (cartHeaderExist == false) {
-        const cartHeader = document.createElement("th");
-        cartHeader.colSpan = 4;
-        cartHeader.innerHTML = "Handlekurv";
-        shoppedListDiv.appendChild(cartHeader);
-        cartHeaderExist = true;
-        console.log(cartHeaderExist);
-      }
-      const trCart = document.createElement("tr");              // Ny rad i tabellen                                              // Hvis vare er lagt i handlekurv
-      const tdRemBtn = document.createElement("img");            // Knapp for å flytte vare tilbake til handlelisten
-      tdRemBtn.classList.add("cartbtn");
-      tdRemBtn.setAttribute("src", "img/cart-x.svg");
-      tdRemBtn.setAttribute("type", "image/svg+xml");
-      tdRemBtn.setAttribute("width", "20px");
-      tdRemBtn.setAttribute("height", "20px");
-      tdRemBtn.addEventListener("click", event =>{
-        removeFromCart(i);
-      })
-      const tdAmountInCart = document.createElement("td");      // Legger til mengde
-      tdAmountInCart.innerHTML = shopItemArr[i].amount;
-      const tdNameInCart = document.createElement("td");        // Legger til varenavn
-      tdNameInCart.innerHTML = shopItemArr[i].name;
-      const tdDelCartBtn = document.createElement("img");       //Legger til sletteknapp
-      tdDelCartBtn.classList.add("delbtn");
-      tdDelCartBtn.setAttribute("src", "img/trash.svg")
-      tdDelCartBtn.setAttribute("type", "image/svg+xml");
-      tdDelCartBtn.setAttribute("width", "20px");
-      tdDelCartBtn.setAttribute("height", "20px");
-      tdDelCartBtn.addEventListener("click", event => {         // Eventlistener for sletteknapp
-        deleteItem(i);
-      })
-      shoppedListDiv.appendChild(trCart);                       // Legger til elementer i DOM
-      trCart.appendChild(tdRemBtn);
-      trCart.appendChild(tdAmountInCart);
-      trCart.appendChild(tdNameInCart);
-      trCart.appendChild(tdDelCartBtn);
+  } else {
+    if (cartHeaderExist == false) { 
+      const cartHeader = document.createElement("th");
+      cartHeader.colSpan = 4;
+      cartHeader.innerHTML = "I handlekurven:";
+      shoppedListDiv.appendChild(cartHeader);
+      cartHeaderExist = true;
+    }
+    const trCart = document.createElement("tr");              // Ny rad i tabellen                                              // Hvis vare er lagt i handlekurv
+    const tdRemBtn = document.createElement("img");            // Knapp for å flytte vare tilbake til handlelisten
+    tdRemBtn.classList.add("cartbtn");
+    tdRemBtn.setAttribute("src", "img/cart-x.svg");
+    tdRemBtn.setAttribute("type", "image/svg+xml");
+    tdRemBtn.setAttribute("width", "20px");
+    tdRemBtn.setAttribute("height", "20px");
+    tdRemBtn.addEventListener("click", event =>{
+      removeFromCart(i);
+    })
+    const tdAmountInCart = document.createElement("td");      // Legger til mengde
+    tdAmountInCart.innerHTML = shopItemArr[i].amount;
+    tdAmountInCart.classList.add("amountcol");
+    const tdNameInCart = document.createElement("td");        // Legger til varenavn
+    tdNameInCart.innerHTML = shopItemArr[i].name;
+    const tdDelCartBtn = document.createElement("img");       //Legger til sletteknapp
+    tdDelCartBtn.classList.add("delbtn");
+    tdDelCartBtn.setAttribute("src", "img/trash.svg")
+    tdDelCartBtn.setAttribute("type", "image/svg+xml");
+    tdDelCartBtn.setAttribute("width", "20px");
+    tdDelCartBtn.setAttribute("height", "20px");
+    tdDelCartBtn.addEventListener("click", event => {         // Eventlistener for sletteknapp
+      deleteItem(i);
+    })
+    shoppedListDiv.appendChild(trCart);                       // Legger til elementer i DOM
+    trCart.appendChild(tdRemBtn);
+    trCart.appendChild(tdAmountInCart);
+    trCart.appendChild(tdNameInCart);
+    trCart.appendChild(tdDelCartBtn);
   }
   }
   topFunction();
@@ -194,12 +250,40 @@ function ShopItem(grName, grAmount, grGroup) {
 
 // Funksjon som oppretter objekt
 function addToList() {
-  let shopItem = new ShopItem(shopItemName.value, shopItemAmount.value, shopItemGroup.value);
-  shopItemArr.push(shopItem);
-  showShopItems();
-  saveToLocal();
-  shopItemName.value = ""
-  shopItemAmount.value = 1;
+  if (shopItemName.value == "") {
+    alert("Navn må inneholde tekst");
+  } else {
+    let shopItem = new ShopItem(shopItemName.value, shopItemAmount.value, shopItemGroup.value);
+    shopItemArr.push(shopItem);
+    showShopItems();
+    saveToLocal();
+    shopItemName.value = ""
+    shopItemAmount.value = "1";
+  }
+}
+
+
+// **********************
+// FUNKSJON FOR Å VISE LISTE OVER KATEGORIER
+//
+function showCategories() {
+  const categoriesDiv = document.createElement("div");
+  categoriesDiv.classList.add("categories-div");
+  const categoriesListDiv = document.createElement("div");
+  categoriesListDiv.classList.add("categories-list-div");
+  const categoryNameInput = document.createElement("input");
+  categoryNameInput.classList.add("category-input");
+  categoryNameInput.type = "text";
+  categoryNameInput.placeholder = "Kategorinavn";
+  categoryNameInput.name = "categoryName";
+  categoryNameInput.id = "categoryName";
+  const categoryAddBtn = document.createElement("button");
+  categoryAddBtn.classList.add("addbtn");
+  categoryAddBtn.innerHTML="+";
+  document.body.appendChild(categoriesDiv);
+  categoriesDiv.appendChild(categoriesListDiv);
+  categoriesListDiv.appendChild(categoryNameInput);
+  categoriesListDiv.appendChild(categoryAddBtn);
 }
 
 

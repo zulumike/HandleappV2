@@ -45,17 +45,25 @@
     Laget funksjon for å slette varer
     Laget funksjon for å flytte varer mellom handleliste og handlekurv
 
-    Nå gjenstår å finne en måte å lagre dette 
-    [ ] i database
-    [V] lokalt
-
-    [V] Må legge til css for å endre muspeker på knapper for sletting og flytting
-    
-
 06.12.2021:
     Lagt til lagring til localstorage
     Ordnet css for muspeker over sletteknapp og flytteknapp
 
-    [] Må legge til krav til innhold i navn-feltet
-    [] Knapp med dertil funksjon for å fjerne hele listen,
-        Ligge i menyen oppe til høyre, men poppe opp som alternativ når alle varer er "plukket".
+    Commit til staging kjørt!
+
+07.12.2021:
+    Fikset krav til innhold i navn-feltet
+    Oppdaget feil i å kalle toTopFunction fra function.js. Flyttet funksjoner i totop.js inn i function.js
+    Høyrejustert antall-kolonnen
+
+08.12.2021:
+    Laget menyknapp fra hamburger for å slette hele listen (reset) 
+    Justert tekst-størrelser for å få plass til mer informasjon
+    Begynt å legge til div og input-felt for å legge til kategorier
+        Sliter med å få samme størrelse som input-feltet til handleliste. Klarer ikke å se forskjellen på de to i css.......
+        Var pga grid-innstillinger i div over...
+
+14.12.2021:
+    Kjørte commit av tidligere endringer
+
+    
