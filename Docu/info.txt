@@ -67,3 +67,76 @@
     Kjørte commit av tidligere endringer
 
     
+02.05.2022:
+    Starter prosessen med å lage en backend som skal håndtere lagring av data til database
+    Opprettet mappe src, og under der følgene mapper:
+        routes          - Oppretter router mellom url og controllere
+        models          - Inneholder db schema
+        controllers     - Funksjoner
+
+    Kjørt npm init på src folder
+    npm install nodemon     // for å automatisk restarte node.js ved endringer
+    npm install dotenvi     // for å kunne bruke environtment "variabler". feks db connect settingsnpm 
+    npm install mongoose    // for å koble til database
+
+    Registrert mongodb.
+    cluster: Handleapp
+    user: dbuser
+    passord: DBwordpass1978!
+
+    Opprettet .env fil i src katalog. Denne setter env settings for databasen (tilkoblingsuri, brukernavn og passord)
+
+    Opprettet cart.js i models katalog. Definert DB schema for handlelisten som skal lagres
+
+    Opprettet index.js i src katalog. Importert mongoose funksjoner, dotenv og kjørt connect til databasen OK.
+
+03.05.2022:
+    Prøve mongodb istedenfor mongoose
+    Det fungerer greit.
+    Satt opp models\cart.js med ny connection constant mongoConnection
+    Controllers\cart.js bruker denne mongoConnection til å koble til mongoDB, sette databasenavn, database collection og sette inn dokument(fått fra index.js)
+    Dette skal nok etterhvert komme fra routes istedenfor slik at jeg kan bruke dette fra front-end via express tenker jeg.
+
+    Startet bygging av routes.
+    Installert npm pakke express
+    Opprettet cart.js i routes
+    Satt opp index.js med init av app og starte lytting på port OK.
+    Satt opp routing av /post (for testing) til dbwrite i controllers, men det fungerte Ikke
+        Må nok google litt og lete etter eksempler for å poste data som kan routes til database
+    
+04.05.2022:
+    Prøvde en renere fremgang. Kutter ut express og bruker http sammen med url.
+    Bruker url parser for å bruke url som en måte å gi variabler på. f.eks: http://localhost:8080/?db=zm&collection=handlekurv&name=Egg&amount=12&group=Gruppe&shopped=false
+    Det fungerer delvis. Av en eller annen grunn, så blir ikke variabelen collectionname riktig, samt at dbWrite kjøres to ganger ser det ut til...
+    collectionName ser nå ut til å fungere... Men det lagres fremdeles dobbelt opp...... ene undefined
+    Kanskje en restart hjelper.....
+
+05.05.2022:
+    Det kjøres ikke to ganger hvis jeg gjør det via postman programmet, så det er noe som skjer fra edge dette.
+    Og det er også årsaken til at collectionname ikke blir riktig. Ved andre gangs "get", vil alle variabler mangle....
+    Så da fungerer det omtrent som tiltenkt. Også testet fra front-ende (functions.js). Men gjort kun en enkelt test på dette, må utvikles mye mer.
+    Tror også jeg må finne en annen måte å sende data til backend på som er mer skjult (ikke åpne ny fane f.eks)...
+    Samt skrive hele listen til db istedenfor en og en vare. Da må nok først listen slettes og deretter skrives på nytt.
+
+06.05.2022:
+    Prøver nå å skrive om slik at jeg bruker post for å sende inn variabler og beskjed om å lagre.
+    Bruker da express igjen og routes.
+
+07.05.2022:
+    Fått post til å fungere også nå. For å få med body, så måtte jeg ta i bruk express.json for å "parse" body.
+    Prøvd videre med å få postet data fra frontend (functions.js), men støter på et sikkerhetsproblem. CORS tillater ikke request pga annet domene eller noe sånt.
+    Installert modul cors og tar i bruk denne.
+    Dette ser ut til å fungere.
+    Nå må jeg bare teste med å få lagt inn ekte varer fra frontend istedenfor statiske fra js.
+    Funker, men nå lagres en og en vare inn i database. Må endre slik at når handlekurven oppdateres, så oppdateres også databasen.
+    La til funksjon i functions.js som tar handlekurven (shopItemArr) og JSON.stringify'er den til en http post request.
+    routes i backend tar disse variablene videre og kjører funksjon i controller. Data sendes som en json-array.
+    Ved oppdatering droppes collection før det legges inn data fra arrayet.
+    Må også oppdatere db når handleliste tømmes og når varer legges i handlekurv.
+    Når handleliste er tom, vil dette gi en error
+    Samt at hvis collection handlekurv ikke eksisterer vil slette funksjonen(drop) gi feilmelding.
+    Må lage en if som sjekker om den eksisterer, samt en if som sjekker om request inneholder noen data i det hele tatt...
+    Tok bort throw funksjon ved feil. Dette løser forsåvidt problemet slik at app ikke krasjer, men bare logger en feil.
+    Ryddet bort unødvendige npm pakker, kommentarer og console.log.
+    Testet kjapt også å legge til i handlekurv og tilbake. Ser ut til å fungere, men en gang ble handlekurv collection tømt og ikke oppdatert....
+    

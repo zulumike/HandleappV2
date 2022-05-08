@@ -1,5 +1,4 @@
 
-
 // *************
 //  VARIABLER
 // *************
@@ -12,6 +11,7 @@ const shopListTable = document.querySelector('#main-shoplisttable');
 const shoppedListTable = document.querySelector('#main-shoppedlisttable');
 const toTopButton = document.querySelector('#totopbutton');
 const dropDownMenu = document.querySelector('#dropDownMenu');
+const postURL = "http://localhost:8080/post";
 
 let shopItemArr = [];
 let categoriesArr = [];
@@ -96,6 +96,7 @@ function deleteItem(id) {
   shopItemArr.splice(id, 1);
   showShopItems();
   saveToLocal();
+  saveToDB();
 }
 
 // ***********************
@@ -106,6 +107,7 @@ function addToCart(id) {
   shopItemArr[id].shopped = true;
   showShopItems();
   saveToLocal();
+  saveToDB();
 }
 
 
@@ -117,6 +119,7 @@ function removeFromCart(id) {
   shopItemArr[id].shopped = false;
   showShopItems();
   saveToLocal();
+  saveToDB();
 }
 
 
@@ -140,10 +143,27 @@ function saveToLocal() {
   localStorage.setItem("shoplist", JSON.stringify(shopItemArr));
 }
 
+// ***********************
+// LAGRER VARENE I MONGODB
+// 
+
+function saveToDB() {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", postURL);
+  xhr.setRequestHeader("Accept", "application(json");
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onload = () => console.log('Saving to mongodb: ',xhr.responseText);
+  let data = JSON.stringify(shopItemArr);
+  xhr.send(data);
+}
+
+// ***************************
+
 function emptyShopItemArr() {
   shopItemArr = [];
   showShopItems();
   saveToLocal();
+  saveToDB();
 }
 
 // Funksjon som skriver shopItemArr ut på nettleseren
@@ -253,10 +273,11 @@ function addToList() {
   if (shopItemName.value == "") {
     alert("Navn må inneholde tekst");
   } else {
-    let shopItem = new ShopItem(shopItemName.value, shopItemAmount.value, shopItemGroup.value);
+    let shopItem = new ShopItem(shopItemName.value, parseInt(shopItemAmount.value), shopItemGroup.value);
     shopItemArr.push(shopItem);
     showShopItems();
     saveToLocal();
+    saveToDB();
     shopItemName.value = ""
     shopItemAmount.value = "1";
   }
