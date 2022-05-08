@@ -6,7 +6,8 @@
     --maincolor: rgba(128, 0, 128, 1);
     --barcolor: #ecd9ec;
     --bgcolor: #f8f8f8;
-    --fontsize-std: 32px;
+    --fontsize-std: 24px;
+    --fontsize-mdm: 18px;
     --fontsize-small: 16px;
     --fontfam-std: sans-serif;
     --maxwidth-std: 640px;
@@ -20,6 +21,21 @@ body {
     background-color: var(--bgcolor);
     font-size: var(--fontsize-std);
     font-family:var(--fontfam-std);
+}
+
+.addbtn {
+    margin-right: 0px;
+    height: 35px;
+    width: 35px;
+    padding: 0px;
+    background-color: var(--maincolor);
+    color: var(--bgcolor);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: var(--fontsize-mdm);
+    text-align: center;
+    vertical-align: middle;
 }
 
 
@@ -96,72 +112,87 @@ body {
 .navbar-menu {
     grid-area: hamburger;
     height: 50px;
-    justify-self: flex-end;
+    /* justify-self: flex-end; */
     border-radius: 10px;
     padding: 0px 10px;
+    cursor: pointer;
+    text-align: end;
 }
 
 .navbar-menu:active {
     background-color: var(--barcolor);
 }
 
+.dropdown-menu {
+    display: none;
+    margin-top: -5px;
+    margin-right: -10px;
+    background-color: var(--barcolor);
+    border-radius: 10px;
+    text-align: end;
+}
+
+.dropdown-menu span {
+    font-size: var(--fontsize-mdm);
+    text-align: end;
+    padding: 5px;
+}
+
+.show-menu {
+    display: block;
+}
+
 
  /* Main
  -------------------------------------------- */
 
- main {
-     margin-top: 50;
- }
-
-.add-container {
-    display: flex;
-    margin-top: 50px;
+.main-container {
     width: 100%;
-    background-color: var(--bgcolor);
+    margin-top: 55px;
 }
 
-.add-form {
-    margin: 5px auto;
+.main-top {
+    width: 100%;
+}
+
+.main-topgrid {
+    display: grid;
+    margin: 0px auto;
+    max-width: var(--maxwidth-std);
+    grid-template-columns: 40% 10% 37% 10%;
+    grid-auto-rows: 35px;
+    gap: 1%;
+}
+
+.shopitem-name {
+    margin-left: 0px;
+    border: none;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+.shopitem-amount {
+    border: none;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+.shopitem-group {
+    border: none;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+.main-shoplisttable {
+    margin: 0px auto;
+    margin-bottom: 50px;
     max-width: var(--maxwidth-std);
 }
 
-.groceryinput-div {
-    height: 30px;
-    margin-bottom: 5px;
-    align-content: stretch;
+.main-shoplisttable td {
+    padding: 2px 5px;
 }
 
-.grocery-name {
-    height: 100%;
-    margin-left: 2%;
-    width: 30%;
-    padding: 0;
-    border-width: 0.5px;
-}
-
-.grocery-amount {
-    height: 100%;
-    width: 10%;
-    padding: 0;
-    border-width: 0.5px;
-    text-align: center;
-}
-
-.groceryinput-div select {
-    height: 100%;
-    width: 30%;
-
-}
-
-.add-button {
-    background-color: var(--maincolor);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    height: 100%;
-    margin-right: 2%;
-    width: 20%;
-}
 
 /* Shoplist
 ---------------------------*/
@@ -171,8 +202,30 @@ body {
     width: 100%;
  }
 
+ .main-shoplisttable {
+    margin: 0px auto;
+    margin-bottom: 50px;
+    max-width: var(--maxwidth-std);
+}
+
+.main-shoplisttable td {
+    padding: 2px 5px;
+}
+
 .shoplist-table {
     margin: 0px auto;
+}
+
+.cartbtn:hover {
+    cursor: pointer;
+}
+
+.amountcol {
+    text-align: end;
+}
+
+.delbtn:hover {
+    cursor: pointer;
 }
 
 .check-icon {
@@ -192,6 +245,10 @@ body {
     background-color: var(--barcolor);
 }
 
+.shop-item-name {
+    text-align: center;
+}
+
 .main-shoppedlist {
     width: 100%;
     margin-bottom: 50px;
@@ -208,6 +265,10 @@ body {
 .shoppedlist-table object {
     padding: 5px;
     border-radius: 10px;
+}
+
+.cartdiv {
+    margin-top: 10px;
 }
 
 
@@ -244,6 +305,7 @@ body {
  .footer-left {
     grid-area: left;
     justify-self: start;
+    margin-left: 10px;
  }
 
  .footer-middle {
@@ -273,3 +335,40 @@ body {
     grid-area: right;
     justify-self: end;
  }
+
+
+ /* categories
+---------------------------*/
+
+.categories-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.categories-list-div {
+    display: flex;
+    margin: auto;
+    margin-top: 53px;
+    max-width: var(--maxwidth-std);
+    min-height: 300px;
+    border-radius: 10px;
+    background-color:var(--barcolor);
+    justify-content: center;
+    align-items: start;
+}
+
+.categories-list-div button {
+    margin: 5px;
+}
+
+.category-input {
+    margin: 5px;
+    height: 31px;
+    border: none;
+    border: solid 1px;
+    border-radius: 10px;
+}
