@@ -11,7 +11,7 @@ const shopListTable = document.querySelector('#main-shoplisttable');
 const shoppedListTable = document.querySelector('#main-shoppedlisttable');
 const toTopButton = document.querySelector('#totopbutton');
 const dropDownMenu = document.querySelector('#dropDownMenu');
-const postURL = "http://dingseboms.no/handlelistestaging/:8080/post";
+const postURL = "https://lemon-cliff-0cfaf8a03.azurestaticapps.net/:8080/post";
 
 let shopItemArr = [];
 let categoriesArr = [];
