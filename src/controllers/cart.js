@@ -4,6 +4,7 @@ const mongoConnection = require('../models/cart');
 async function dbWrite(newItem) {
 
     try {
+        console.log('start save');
         await mongoConnection.connect();
         const database = mongoConnection.db('zm');
         const collName = database.collection('handlekurv');
