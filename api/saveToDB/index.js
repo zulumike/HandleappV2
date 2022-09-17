@@ -16,6 +16,7 @@ module.exports = async function (context, req) {
         });
             const result = await collName.insertMany(newItem);
             // await context.log('Document stored in db with id: ', result.insertedIds);
+            
             return true;
         }
         catch (error) {
