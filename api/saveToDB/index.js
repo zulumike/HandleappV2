@@ -4,7 +4,6 @@ const mongoConnection = new MongoClient(process.env.MONGO_URI);
 var responseMessage = 'Save NOT complete';
 
 module.exports = async function (context, req) {
-    context.log('Save To DB started');
     async function dbWrite(newItem) {
         try {
             await mongoConnection.connect();
@@ -16,7 +15,7 @@ module.exports = async function (context, req) {
         });
             const result = await collName.insertMany(newItem);
             // await context.log('Document stored in db with id: ', result.insertedIds);
-            
+
             return true;
         }
         catch (error) {

@@ -11,9 +11,7 @@ const shopListTable = document.querySelector('#main-shoplisttable');
 const shoppedListTable = document.querySelector('#main-shoppedlisttable');
 const toTopButton = document.querySelector('#totopbutton');
 const dropDownMenu = document.querySelector('#dropDownMenu');
-// const postURL = "https://lemon-cliff-0cfaf8a03.azurestaticapps.net:8080/post";
-// const postURL = "http://127.0.0.1:8080/post";
-const postURL = process.env.SaveToDBURL;
+const saveToDBURL = window.location.href + "api/saveToDB";
 
 let shopItemArr = [];
 let categoriesArr = [];
@@ -152,7 +150,7 @@ function saveToLocal() {
 function saveToDB() {
   console.log('Function saveToDB starts');
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", postURL);
+  xhr.open("POST", saveToDBURL);
   xhr.setRequestHeader("Accept", "application(json");
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.onload = () => console.log('Saving to mongodb: ',xhr.responseText);
