@@ -13,7 +13,7 @@ const toTopButton = document.querySelector('#totopbutton');
 const dropDownMenu = document.querySelector('#dropDownMenu');
 // const postURL = "https://lemon-cliff-0cfaf8a03.azurestaticapps.net:8080/post";
 // const postURL = "http://127.0.0.1:8080/post";
-const postURL = "/api/saveToDB";
+const postURL = process.env.SaveToDBURL;
 
 let shopItemArr = [];
 let categoriesArr = [];

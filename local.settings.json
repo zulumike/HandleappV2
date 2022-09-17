@@ -1,0 +1,6 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "SaveToDBURL": "http://localhost:4280/api/saveToDB"
+  }
+}
