@@ -12,6 +12,7 @@ const shoppedListTable = document.querySelector('#main-shoppedlisttable');
 const toTopButton = document.querySelector('#totopbutton');
 const dropDownMenu = document.querySelector('#dropDownMenu');
 const saveToDBURL = window.location.href + "api/saveToDB";
+const readFromDBURL = window.location.href + "api/readFromDB";
 
 let shopItemArr = [];
 let categoriesArr = [];
@@ -143,9 +144,26 @@ function saveToLocal() {
   localStorage.setItem("shoplist", JSON.stringify(shopItemArr));
 }
 
+// LESER VARENE FRA MONGODB
+//
+
+function readFromDB() {
+  console.log('APi readFromDB is called');
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", readFromDBURL);
+  xhr.setRequestHeader("Accept", "application(json");
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onload = () => {
+    shopItemArr = JSON.parse(xhr.responseText);
+    console.log(xhr.responseText);
+    showShopItems();
+  }
+  xhr.send();
+}
+
 // ***********************
 // LAGRER VARENE I MONGODB
-// 
+//
 
 function saveToDB() {
   console.log('Function saveToDB starts');
@@ -153,7 +171,7 @@ function saveToDB() {
   xhr.open("POST", saveToDBURL);
   xhr.setRequestHeader("Accept", "application(json");
   xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onload = () => console.log('Saving to mongodb: ',xhr.responseText);
+  xhr.onload = () => console.log(xhr.responseText);
   let data = JSON.stringify(shopItemArr);
   xhr.send(data);
 }
@@ -311,7 +329,7 @@ function showCategories() {
 
 // ************************
 // SJEKKER OM LOCALSTORAGE EKSISTERER OG KJØRER FUNKSJON FOR Å HENTE VARER
-
-if (localStorage.shoplist) {
-  restoreFromLocal();
-}
+readFromDB();
+// if (localStorage.shoplist) {
+//   restoreFromLocal();
+// }
