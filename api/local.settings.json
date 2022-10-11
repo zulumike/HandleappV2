@@ -1,0 +1,8 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "MONGO_URI": "mongodb+srv://dbuser:DBwordpass1978@handleapp.er5sz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  }
+}
