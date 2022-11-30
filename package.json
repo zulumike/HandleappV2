@@ -3,6 +3,6 @@
     "@azure/static-web-apps-cli": "^1.0.3"
   },
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   }
 }
