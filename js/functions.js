@@ -141,7 +141,7 @@ function restoreFromLocal() {
 
 function saveToLocal() {
   // localStorage.removeItem("shoplist");
-  localStorage.setItem("shoplist", JSON.stringify(shopItemArr));
+  localStorage.setItem("shoplist", JSON.stringify(shopItemArr))
 }
 
 // LESER VARENE FRA MONGODB
