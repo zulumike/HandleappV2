@@ -11,8 +11,11 @@ const shopListTable = document.querySelector('#main-shoplisttable');
 const shoppedListTable = document.querySelector('#main-shoppedlisttable');
 const toTopButton = document.querySelector('#totopbutton');
 const dropDownMenu = document.querySelector('#dropDownMenu');
+// const saveToDBURL = "http://localhost:7071/api/saveToDB";
+// const readFromDBURL = "http://localhost:7071/api/readFromDB";
 const saveToDBURL = window.location.href + "api/saveToDB";
 const readFromDBURL = window.location.href + "api/readFromDB";
+console.log(readFromDBURL);
 
 let shopItemArr = [];
 let categoriesArr = [];
