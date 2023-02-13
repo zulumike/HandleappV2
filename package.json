@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "@azure/static-web-apps-cli": "^1.0.3"
+    "@azure/static-web-apps-cli": "^0.6.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=16.0.0 <18.0.0"
   }
 }
