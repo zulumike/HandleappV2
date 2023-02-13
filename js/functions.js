@@ -179,6 +179,7 @@ function saveToDB() {
   xhr.send(data);
 }
 
+
 // ***************************
 
 function emptyShopItemArr() {
@@ -186,6 +187,17 @@ function emptyShopItemArr() {
   showShopItems();
   saveToLocal();
   saveToDB();
+}
+
+function deleteShoppedItems() {
+  for (let i = 0; i < shopItemArr.length; i++) {
+    if (shopItemArr[i].shopped == true) {
+      shopItemArr.splice(i, 1);
+      showShopItems();
+      saveToLocal();
+      saveToDB();
+    }
+  }
 }
 
 // Funksjon som skriver shopItemArr ut på nettleseren
@@ -244,8 +256,20 @@ function showShopItems() {
     if (cartHeaderExist == false) { 
       const cartHeader = document.createElement("th");
       cartHeader.colSpan = 4;
-      cartHeader.innerHTML = "I handlekurven:";
+      cartHeader.innerHTML = "Handlekurv ";
+      const cartHeaderDelBtn = document.createElement("img");
+      cartHeaderDelBtn.classList.add("delbtn");
+      cartHeaderDelBtn.setAttribute("src", "img/trash.svg")
+      cartHeaderDelBtn.setAttribute("type", "image/svg+xml");
+      cartHeaderDelBtn.setAttribute("width", "20px");
+      cartHeaderDelBtn.setAttribute("height", "20px");
+      cartHeaderDelBtn.addEventListener("click", event => {         // Eventlistener for sletteknapp
+      deleteShoppedItems();
+    })
+      // shoppedListDiv.appendChild(cartHeaderDelBtn);
       shoppedListDiv.appendChild(cartHeader);
+      cartHeader.appendChild(cartHeaderDelBtn);
+      
       cartHeaderExist = true;
     }
     const trCart = document.createElement("tr");              // Ny rad i tabellen                                              // Hvis vare er lagt i handlekurv
